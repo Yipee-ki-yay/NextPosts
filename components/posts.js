@@ -53,9 +53,13 @@ function Post({ post, action }) {
 }
 
 export default function Posts({ posts }) {
+  console.log('in Posts');
   const [optimisticPosts, updateOptimisticPosts] = useOptimistic(posts, (prevPosts, updatedPostId) => {
+    console.log('updatedPostId', updatedPostId);
     const updatedPostIndex = prevPosts.findIndex(post => post.id === updatedPostId);
 
+    console.log('updatedPostIndex', updatedPostIndex);
+    
     if (updatedPostIndex === -1) {
       return prevPosts;
     }
